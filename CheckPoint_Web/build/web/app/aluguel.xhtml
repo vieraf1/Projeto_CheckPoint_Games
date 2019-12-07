@@ -1,0 +1,154 @@
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo">
+        <h:form id="formulario">
+            <h:panelGrid>
+                <p:growl id="mensagem" showDetail="true" sticky="true" /> 
+            </h:panelGrid>
+
+            <p:panelGrid id="panelBuscar" columns="4" styleClass="removeBorderPanelGrid">
+
+                <p:outputLabel for="clienteBuscar" value="Cliente:" />
+                <p:selectOneMenu id="clienteBuscar" value="#{aluguelBean.clienteBusca}" style="width:125px">
+                    <f:selectItem itemLabel="Todos" itemValue="" />
+                    <f:selectItems value="#{aluguelBean.clientes}" var="cliente" itemValue="#{cliente}" itemLabel="#{cliente.nome}" itemLabelEscaped="false"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel for="gameBuscar" value="Jogo:" />
+                <p:selectOneMenu id="gameBuscar" value="#{aluguelBean.gameBusca}" style="width:125px">
+                    <f:selectItem itemLabel="Todos" itemValue="" />
+                    <f:selectItems value="#{aluguelBean.games}"/>
+                </p:selectOneMenu>
+
+                <p:commandButton value="Consultar" styleClass="btn"
+                                 update="panelNovoEditar panelDataTable mensagem" actionListener="#{aluguelBean.acaoBotaoConsulta()}"/>
+                <p:commandButton value="Adicionar" styleClass="btn" update="panelNovoEditar panelDataTable"
+                                 actionListener="#{aluguelBean.acaoBotaoNovo()}" immediate="true"/>
+            </p:panelGrid>
+
+            <p:panelGrid id="panelNovoEditar" columns="1" style="margin-top: 20px; margin-right: 20px; margin-left: 300px">
+                <p:panelGrid id="panelNE" columns="4" rendered="#{aluguelBean.habilitarPainel()}" styleClass="removeBorderPanelGrid">
+
+                    <p:outputLabel for="cliente" value="Cliente:" />
+                    <p:selectOneMenu id="cliente" value="#{aluguelBean.aluguelCRUD.cliente}" style="width:125px" disabled="#{aluguelBean.aluguelNovo eq false}">
+                        <f:selectItems value="#{aluguelBean.clientes}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="game" value="Jogo:" />
+                    <p:selectOneMenu id="game" value="#{aluguelBean.aluguelCRUD.game}" style="width:125px" disabled="#{aluguelBean.aluguelNovo eq false}">
+                        <f:selectItems value="#{aluguelBean.games}"/>
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel value="Data de Retirada" for="dataRetirada" />
+                    <p:calendar id="dataRetirada" value="#{aluguelBean.aluguelCRUD.dataRetirada}" pattern="yyyy-MM-dd" mask="true"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Data de Retirada é Obrigatório"/>
+
+                    <p:outputLabel value="Data de Devolução" for="dataDevolucao" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+                    <p:calendar id="dataDevolucao" value="#{aluguelBean.aluguelCRUD.dataDevolucao}" pattern="yyyy-MM-dd" mask="true"
+                                style="max-width:400px;" required="true" requiredMessage="O Campo Data de Devolução é Obrigatório" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+
+                    <p:outputLabel value="Valor a Pagar" for="valorPagar" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+                    <p:inputNumber id="valorPagar" value="#{aluguelBean.aluguelCRUD.valorPagar}" decimalPlaces="2"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Valor a Pagar é Obrigatório" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+
+                    <p:outputLabel value="Valor Final" for="valorPago" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+                    <p:inputNumber id="valorPago" value="#{aluguelBean.aluguelCRUD.valorPago}" decimalPlaces="2"
+                                 style="max-width:400px;" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+                    
+                    <p:outputLabel value="Data de Entrega" for="dataEntrega" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+                    <p:calendar id="dataEntrega" value="#{aluguelBean.aluguelCRUD.dataEntrega}" pattern="yyyy-MM-dd" mask="true"
+                                 style="max-width:400px;" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+                    
+                    <p:outputLabel value="Dias de Atraso" for="diasAtraso" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+                    <p:inputNumber id="diasAtraso" value="#{aluguelBean.aluguelCRUD.diasAtrasados}" decimalPlaces="0" minValue="0" maxValue="99" 
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Dias de Atraso é Obrigatório" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+
+                    <p:outputLabel for="tipoPagamento" value="Tipo de Pagamento:" rendered="#{aluguelBean.aluguelNovo eq false}"/>
+                    <p:selectOneMenu id="tipoPagamento" value="#{aluguelBean.aluguelCRUD.tipoPagamento}" style="width:125px" rendered="#{aluguelBean.aluguelNovo eq false}">
+                        <f:selectItem itemLabel="Dinheiro" itemValue="Dinheiro" />
+                        <f:selectItem itemLabel="Débito" itemValue="DÉBITO" />
+                        <f:selectItem itemLabel="Crédito" itemValue="CRÉDITO" />
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel/>
+                    <p:outputLabel/>
+
+                    <p:commandButton value="Salvar" styleClass="btn"
+                                     update="panelDataTable panelNovoEditar mensagem" actionListener="#{aluguelBean.acaoBotaoSalvar()}"/>
+                    <p:commandButton value="Cancelar" styleClass="btn" update="panelDataTable panelNovoEditar"
+                                     actionListener="#{aluguelBean.acaoBotaoCancelar()}" immediate="true"/>
+                </p:panelGrid>
+            </p:panelGrid>
+
+            <p:panelGrid id="panelDataTable" columns="1" styleClass="removeBorderPanelGrid" style="margin-top: 20px;">
+                <p:dataTable id="dtGame" var="aluguel" value="#{aluguelBean.alugueis}" rows="10" tableStyle="table-layout: auto"
+                             paginator="true" rendered="#{aluguelBean.habilitarConsulta()}" 
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" emptyMessage="Nenhum Registro de Cliente foi Encontrado">
+
+                    <p:column headerText="Cliente">
+                        <h:outputText value="#{aluguel.cliente.nome} #{aluguel.cliente.sobrenome}" />
+                    </p:column>
+
+                    <p:column headerText="Jogo">
+                        <h:outputText value="#{aluguel.game.numeroSerie} | #{aluguel.game.nomeTitulo}" />
+                    </p:column>
+
+                    <p:column headerText="Valor a Pagar">
+                        <h:outputText value="#{aluguel.valorPagar}" >
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Valor Final">
+                        <h:outputText value="#{aluguel.valorPago}" >
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Tipo de Pagamento">
+                        <h:outputText value="#{aluguel.tipoPagamento}" />
+                    </p:column>
+
+                    <p:column headerText="Data de Retirada">
+                        <h:outputText value="#{aluguel.dataRetirada}" />
+                    </p:column>
+
+                    <p:column headerText="Data de Devolução">
+                        <h:outputText value="#{aluguel.dataDevolucao}" />
+                    </p:column>
+
+                    <p:column headerText="Data da Entrega">
+                        <h:outputText value="#{aluguel.dataEntrega}" />
+                    </p:column>
+
+                    <p:column headerText="Dias de Atraso">
+                        <h:outputText value="#{aluguel.diasAtrasados}" />
+                    </p:column>
+
+                    <p:column headerText="Cadastrante">
+                        <h:outputText value="#{aluguel.funcionario.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Alterar">
+                        <p:commandButton icon="fa fa-pencil" 
+                                         actionListener="#{aluguelBean.acaoBotaoAlterar(aluguel)}" process="@this" ajax="true" update=":formulario" immediate="true">
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column headerText="Deletar">
+                        <p:commandButton icon="fa fa-trash" action="#{aluguelBean.deletarAluguel(aluguel)}" ajax="false" update="panelDataTable" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable>
+            </p:panelGrid>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,61 @@
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo">
+        <h:form id="formulario">
+            <h:panelGrid>
+                <p:growl id="mensagem" showDetail="true" sticky="true" /> 
+            </h:panelGrid>
+
+            <p:panelGrid id="panelBuscar" columns="2" styleClass="removeBorderPanelGrid">
+                <p:outputLabel value="Nome do Jogo" for="nome" />
+                <p:inputText id="nome" value="#{disponibilidadeBean.nomeJogo}"
+                             style="max-width:400px;" />
+
+                <p:commandButton value="Jogos Disponíveis" styleClass="btn"
+                                 update="panelDataTable" actionListener="#{disponibilidadeBean.acaoBotaoConsulta()}"/>
+            </p:panelGrid>
+
+            <p:panelGrid id="panelDataTable" columns="1" styleClass="removeBorderPanelGrid" style="margin-top: 20px;">
+                <p:dataTable id="dtGame" var="game" value="#{disponibilidadeBean.games}" rows="10"
+                             paginator="true" rendered="#{disponibilidadeBean.habilitarConsulta()}"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" emptyMessage="Nenhum Registro de Jogo foi Encontrado">
+                    
+                    <p:column headerText="Nome do Título">
+                        <h:outputText value="#{game.nomeTitulo}" />
+                    </p:column>
+
+                    <p:column headerText="Número de Série">
+                        <h:outputText value="#{game.numeroSerie}" />
+                    </p:column>
+
+                    <p:column headerText="Console">
+                        <h:outputText value="#{game.console}" />
+                    </p:column>
+
+                    <p:column headerText="Data de Lançamento">
+                        <h:outputText value="#{game.dataLancamento}" />
+                    </p:column>
+
+                    <p:column headerText="Valor de Aluguel">
+                        <h:outputText value="#{game.valorAluguel}">
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Faixa Etária">
+                        <h:outputText value="#{game.faixaEtaria}" />
+                    </p:column>
+
+                </p:dataTable>
+            </p:panelGrid>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

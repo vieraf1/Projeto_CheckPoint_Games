@@ -1,0 +1,1209 @@
+body {
+	font-size: 12px;
+}
+a {
+	color: #0B356C;	
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+
+select, 
+input[type="text"], 
+input[type="password"] {
+/* 	height: 20px; erro no calendar */
+/* padding: 2px 6px erro no calendar*/;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+textarea{
+    padding: 2px 6px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    width:520px;
+}
+
+input[type="checkbox"] {
+	margin-bottom: 8px;
+}
+
+.input-xlarge {
+  width: 300px;
+}
+
+label {
+	padding-right: 20px;
+	font-weight: bold;
+	font-size: 12px;
+	color: rgb(11, 53, 108);
+}
+
+/* Removendo a borda tracejada que aparece em torno dos componentes no IE */
+a:focus,
+select:focus,
+input[type="text"]:focus,
+.btn:focus {
+	outline: none;
+}
+
+hr {
+	border-width: 2px;
+}
+
+h4 {
+	text-align: center; 
+	padding-top: 5px;
+	color: rgb(11, 53, 108);
+}
+
+form {
+	padding-left: 12px; 
+	padding-right: 12px;
+}
+
+.table th, 
+.table td {
+    padding: 6px;
+}
+
+.btn {
+	color: rgb(11, 53, 108) !important;
+	font-weight: bold;
+	margin-right: 10px;
+	margin-bottom:7px;
+}
+.btn:hover, 
+.btn:focus, 
+.btn:active, 
+.btn.active, 
+.btn.disabled, 
+.btn[disabled] {
+	background-color: rgb(190, 214, 248);
+}
+
+.alert-table {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+
+/* Stilos para padronizar  - N�o Alterar */
+.btn-adicionar {
+	margin-bottom: 40px;
+	margin-top: 10px;
+}
+
+/* Padr�o de Tabelas  - N�o Alterar */
+.table-large-width {
+	width: 1000px;
+}
+/* Tamanho do container inteiro */
+.table-xlarge-width{
+	width:1207px;
+}
+.table-medium-width {
+	width: 500px;
+}
+.table-small-width {
+	width: 300px;
+}
+/* Modifica��o do Hover nas linhas da tabela */
+.table-hover tbody tr:hover > td,
+.table-hover tbody tr:hover > th {
+	background-color: #EEEEEE !important;
+}
+
+/* Padr�o de Colunas para tabelas - N�o Alterar */
+.col-large-width {
+	width: 200px;
+}
+.col-medium-width {
+	width: 150px;
+}
+.col-small-width {
+	width: 50px;
+}
+/* Alinhamento dos botoes das tela de cadastro */
+.button-align-center {
+	text-align: center;
+	margin-top: 15px;
+}
+.button-align-center input {
+	margin-left:10px;
+}
+
+.button-action-align {
+	text-align: center;
+	
+}
+.button-action-align a {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.button-align-right {
+	float:right;
+}
+.alinhar-centro{
+	margin: 0 auto;
+}
+
+.alert-success {
+	  color: #3a87ad !important;
+	  background-color: #d9edf7 !important;
+	  border-color: #bce8f1 !important; 
+}
+.form-inline {
+	margin-top: 10px;
+	margin-bottom:10px;
+}
+.rf-cal-btn {
+	margin-left:5px;
+} 
+.statusLoading {
+    margin-left: 540px;
+    margin-top: 151px;
+    position: absolute;
+	
+}
+.statusLoading img {
+	height:20px;
+}
+.row-width {
+	width: 108px !important;
+}
+
+.header-width {
+	width: 108px !important;
+}
+
+.font-header-tabela {
+	font-size: 12px;
+}
+.align-text-right-tabela {
+	text-align: right;
+}
+.align-text-left-column {
+	text-align: left;
+}
+.fr-font-size-row
+
+.total_tabela{
+	background-color: #F0F0F0 !important;
+    border-bottom: 1px solid #C0C0C0;
+    border-right: 1px solid #C0C0C0;
+    color: #000000;
+    font-family: Arial,Verdana,sans-serif !important;
+    font-size: 11px !important;
+    
+}
+.tabela_font_size {
+	font-size:12px !important; 
+}
+
+.fr-font-size-10-row {
+	font-size:10px !important;
+}
+.fr-font-size-10-row td {
+	font-size:10px !important;
+}
+.fr-font-size-10-row thead th {
+	padding:0 !important;
+	font-size:10px !important;
+}
+.fr-text-align-rtl {
+	text-align: right !important;
+}
+.fr-text-align-lft {
+	text-align: left !important;
+}
+.removeBorderPanelGrid tr, .removeBorderPanelGrid td {
+	border:none !important;
+}
+.isVisualizarRegistro{
+	
+}
+.isNovoRegistro{
+	
+}
+.fr-color-excluir {
+	font-weight:bold;
+	color: #FF0000;
+}
+.fr-row-condicao-red {
+	background: red;
+}
+.fr-row-condicao-green {
+	background: green;
+}
+
+ /* Stilos do Login */
+.fr-bg {
+	background-image: url("#{resource['images/box-login.png']}");
+	background-repeat: repeat;
+	background-size: 800px 600px;
+}
+/* Remover o header que aparece no dialog */
+#dlgLogin .ui-widget-header {
+	background: none !important;
+}
+.fr-logo-container {
+	height: auto;
+}
+.fr-left-container-form {
+	 float: left;
+    height: 295px;
+    width: 366px;
+}
+.fr-right-logo {
+	float: right;
+    height: 295px;
+    width: 300px;
+    background-image: url("#{resource['images/fatec-logo.png']}");
+}
+#fr-linha {
+	border:1px inset #FFFFFF;
+    float: right;
+    height: 72%;
+    margin-top: 39px;
+}
+.fr-top-texto {
+    display: block;
+    float: left;
+    height: 115px;
+    width: 362px;
+}
+.fr-bottom-login {
+    clear: left;
+    display: block;
+    height: 176px;
+}
+.fr-one-texto {
+	color: #FFCC29;
+    display: block;
+    font-family: Aharoni,serif;
+    font-size: 35px;
+    margin-left: 8px;
+    margin-top: 5px;
+    text-decoration: underline;
+}
+.fr-two-texto {
+	color: #FFFFFF;
+    display: block;
+    font-family: Calibri;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 9px;
+    margin-top: 6px;
+}
+.fr-three-texto {
+	color: #FFFFFF;
+    display: block;
+    font-family: Calibri;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 9px;
+}
+.fr-login-form {
+	
+}
+.fr-login-form table tr, .fr-login-form table td {
+	border:none !important;
+	padding:0 !important;
+}
+.fr-panel-grid-form {
+	border: none !important;
+}
+.fr-panel-grid-form tr {
+	background: transparent;
+	border: none;
+}
+.fr-panel-grid-form label {
+	color: #FFFFFF;
+}
+.fr-panel-grid-form input {
+	background: transparent !important;
+	border:1px solid black !important;
+	color: #FFFFFF !important;
+	font-size: 1em !important;
+	font-weight: bolder !important;
+}
+.fr-button-login {
+    float: right;
+    height: 45px;
+    width: 90px;
+	
+}
+.fr-input-login{ 
+	
+}
+.fr-img-logo {
+	margin-left: 10px;
+    margin-top: 35px;
+}
+ /* Fim do Stilos do Login */
+
+/* Stilos do header */
+.fr-layout-header {
+}
+.fr-header-container {
+	height: 100%;
+	width: 100%;
+}
+.fr-left-header-container {
+    display: block;
+    float: left;
+    height: 100%;
+    width: 380px;
+}
+.fr-right-header-container {
+    display: block;
+    float: right;
+    height: 100%;
+    width: 380px;
+}
+
+/* Fim do Stilos do Header */
+
+
+/* Modifica��es no CSS do PrimeFaces */
+
+.ui-treetable thead th, .ui-treetable tbody td, .ui-treetable tfoot td {
+	padding: 0 !important;
+	white-space: pre-line !important;
+}
+.ui-panel {
+   background-color: rgba(r,g,b,a) !important;
+}
+.ui-widget-overlay {
+    opacity: 0.8 !important;
+    filter:alpha(opacity:0.8) !important;
+}
+
+.row-font-size {
+	font-size: 10px;
+}
+.ui-datatable .ui-datatable-header{
+	text-align:left !important;
+}
+.ui-datatable-tablewrapper table {
+	text-align:center;
+}	
+
+.ui-dialog-footer {
+	text-align:center !important;
+}
+
+.ui-panelmenu .ui-panelmenu-header a {
+	font-size: 0.85em !important;
+}
+.ui-panelmenu .ui-menuitem-link {
+	margin-left: 35px !important;
+	width: 80% !important;
+	font-size: 10px !important;
+}
+
+.menuItemSelected {
+	background: #DCDCDC !important;
+	font-weight: bold !important;
+}
+.subMenuSelected{
+	
+}
+select.ui-column-filter {
+	height: 25px;
+    width: 230px !important;
+}
+.ui-datatable table {
+	/* width: 0 !important; */
+}
+.patrimonioTable table{
+		table-layout: fixed !important;
+		width: 100% !important;
+}
+.ui-selectonemenu-panel {
+	width:200px !important;
+}
+
+.ui-layout-north {
+                z-index:20 !important;
+                overflow:visible !important;;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+                overflow:visible !important;
+}
+
+@font-face {
+    font-family: 'PrimeIcons';
+    font-display: auto;
+    src: url('./fonts/primeicons.eot');
+    src: url('./fonts/primeicons.eot?#iefix') format('embedded-opentype'), url('./fonts/primeicons.ttf') format('truetype'), url('./fonts/primeicons.woff') format('woff'), url('./fonts/primeicons.svg?#primeicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.pi {
+    font-family: 'primeicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.pi-fw {
+    width: 1.28571429em;
+    text-align: center;
+}
+
+.pi-spin {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+}
+
+@-webkit-keyframes fa-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes fa-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+.pi-step-backward-alt:before {
+    content: "\e9ac";
+}
+
+.pi-step-forward-alt:before {
+    content: "\e9ad";
+}
+
+.pi-forward:before {
+    content: "\e9ae";
+}
+
+.pi-backward:before {
+    content: "\e9af";
+}
+
+.pi-fast-backward:before {
+    content: "\e9b0";
+}
+
+.pi-fast-forward:before {
+    content: "\e9b1";
+}
+
+.pi-pause:before {
+    content: "\e9b2";
+}
+
+.pi-play:before {
+    content: "\e9b3";
+}
+
+.pi-compass:before {
+    content: "\e9ab";
+}
+
+.pi-id-card:before {
+    content: "\e9aa";
+}
+
+.pi-ticket:before {
+    content: "\e9a9";
+}
+
+.pi-file-o:before {
+    content: "\e9a8";
+}
+
+.pi-reply:before {
+    content: "\e9a7";
+}
+
+.pi-directions-alt:before {
+    content: "\e9a5";
+}
+
+.pi-directions:before {
+    content: "\e9a6";
+}
+
+.pi-thumbs-up:before {
+    content: "\e9a3";
+}
+
+.pi-thumbs-down:before {
+    content: "\e9a4";
+}
+
+.pi-sort-numeric-down-alt:before {
+    content: "\e996";
+}
+
+.pi-sort-numeric-up-alt:before {
+    content: "\e997";
+}
+
+.pi-sort-alpha-down-alt:before {
+    content: "\e998";
+}
+
+.pi-sort-alpha-up-alt:before {
+    content: "\e999";
+}
+
+.pi-sort-numeric-down:before {
+    content: "\e99a";
+}
+
+.pi-sort-numeric-up:before {
+    content: "\e99b";
+}
+
+.pi-sort-alpha-down:before {
+    content: "\e99c";
+}
+
+.pi-sort-alpha-up:before {
+    content: "\e99d";
+}
+
+.pi-sort-alt:before {
+    content: "\e99e";
+}
+
+.pi-sort-amount-up:before {
+    content: "\e99f";
+}
+
+.pi-sort-amount-down:before {
+    content: "\e9a0";
+}
+
+.pi-sort-amount-down-alt:before {
+    content: "\e9a1";
+}
+
+.pi-sort-amount-up-alt:before {
+    content: "\e9a2";
+}
+
+.pi-palette:before {
+    content: "\e995";
+}
+
+.pi-undo:before {
+    content: "\e994";
+}
+
+.pi-desktop:before {
+    content: "\e993";
+}
+
+.pi-sliders-v:before {
+    content: "\e991";
+}
+
+.pi-sliders-h:before {
+    content: "\e992";
+}
+
+.pi-search-plus:before {
+    content: "\e98f";
+}
+
+.pi-search-minus:before {
+    content: "\e990";
+}
+
+.pi-file-excel:before {
+    content: "\e98e";
+}
+
+.pi-file-pdf:before {
+    content: "\e98d";
+}
+
+.pi-check-square:before {
+    content: "\e98c";
+}
+
+.pi-chart-line:before {
+    content: "\e98b";
+}
+
+.pi-user-edit:before {
+    content: "\e98a";
+}
+
+.pi-exclamation-circle:before {
+    content: "\e989";
+}
+
+.pi-android:before {
+    content: "\e985";
+}
+
+.pi-google:before {
+    content: "\e986";
+}
+
+.pi-apple:before {
+    content: "\e987";
+}
+
+.pi-microsoft:before {
+    content: "\e988";
+}
+
+.pi-heart:before {
+    content: "\e984";
+}
+
+.pi-mobile:before {
+    content: "\e982";
+}
+
+.pi-tablet:before {
+    content: "\e983";
+}
+
+.pi-key:before {
+    content: "\e981";
+}
+
+.pi-shopping-cart:before {
+    content: "\e980";
+}
+
+.pi-comments:before {
+    content: "\e97e";
+}
+
+.pi-comment:before {
+    content: "\e97f";
+}
+
+.pi-briefcase:before {
+    content: "\e97d";
+}
+
+.pi-bell:before {
+    content: "\e97c";
+}
+
+.pi-paperclip:before {
+    content: "\e97b";
+}
+
+.pi-share-alt:before {
+    content: "\e97a";
+}
+
+.pi-envelope:before {
+    content: "\e979";
+}
+
+.pi-volume-down:before {
+    content: "\e976";
+}
+
+.pi-volume-up:before {
+    content: "\e977";
+}
+
+.pi-volume-off:before {
+    content: "\e978";
+}
+
+.pi-eject:before {
+    content: "\e975";
+}
+
+.pi-money-bill:before {
+    content: "\e974";
+}
+
+.pi-images:before {
+    content: "\e973";
+}
+
+.pi-image:before {
+    content: "\e972";
+}
+
+.pi-sign-in:before {
+    content: "\e970";
+}
+
+.pi-sign-out:before {
+    content: "\e971";
+}
+
+.pi-wifi:before {
+    content: "\e96f";
+}
+
+.pi-sitemap:before {
+    content: "\e96e";
+}
+
+.pi-chart-bar:before {
+    content: "\e96d";
+}
+
+.pi-camera:before {
+    content: "\e96c";
+}
+
+.pi-dollar:before {
+    content: "\e96b";
+}
+
+.pi-lock-open:before {
+    content: "\e96a";
+}
+
+.pi-table:before {
+    content: "\e969";
+}
+
+.pi-map-marker:before {
+    content: "\e968";
+}
+
+.pi-list:before {
+    content: "\e967";
+}
+
+.pi-eye-slash:before {
+    content: "\e965";
+}
+
+.pi-eye:before {
+    content: "\e966";
+}
+
+.pi-folder-open:before {
+    content: "\e964";
+}
+
+.pi-folder:before {
+    content: "\e963";
+}
+
+.pi-video:before {
+    content: "\e962";
+}
+
+.pi-inbox:before {
+    content: "\e961";
+}
+
+.pi-lock:before {
+    content: "\e95f";
+}
+
+.pi-unlock:before {
+    content: "\e960";
+}
+
+.pi-tags:before {
+    content: "\e95d";
+}
+
+.pi-tag:before {
+    content: "\e95e";
+}
+
+.pi-power-off:before {
+    content: "\e95c";
+}
+
+.pi-save:before {
+    content: "\e95b";
+}
+
+.pi-question-circle:before {
+    content: "\e959";
+}
+
+.pi-question:before {
+    content: "\e95a";
+}
+
+.pi-copy:before {
+    content: "\e957";
+}
+
+.pi-file:before {
+    content: "\e958";
+}
+
+.pi-clone:before {
+    content: "\e955";
+}
+
+.pi-calendar-times:before {
+    content: "\e952";
+}
+
+.pi-calendar-minus:before {
+    content: "\e953";
+}
+
+.pi-calendar-plus:before {
+    content: "\e954";
+}
+
+.pi-ellipsis-v:before {
+    content: "\e950";
+}
+
+.pi-ellipsis-h:before {
+    content: "\e951";
+}
+
+.pi-bookmark:before {
+    content: "\e94e";
+}
+
+.pi-globe:before {
+    content: "\e94f";
+}
+
+.pi-replay:before {
+    content: "\e94d";
+}
+
+.pi-filter:before {
+    content: "\e94c";
+}
+
+.pi-print:before {
+    content: "\e94b";
+}
+
+.pi-align-right:before {
+    content: "\e946";
+}
+
+.pi-align-left:before {
+    content: "\e947";
+}
+
+.pi-align-center:before {
+    content: "\e948";
+}
+
+.pi-align-justify:before {
+    content: "\e949";
+}
+
+.pi-cog:before {
+    content: "\e94a";
+}
+
+.pi-cloud-download:before {
+    content: "\e943";
+}
+
+.pi-cloud-upload:before {
+    content: "\e944";
+}
+
+.pi-cloud:before {
+    content: "\e945";
+}
+
+.pi-pencil:before {
+    content: "\e942";
+}
+
+.pi-users:before {
+    content: "\e941";
+}
+
+.pi-clock:before {
+    content: "\e940";
+}
+
+.pi-user-minus:before {
+    content: "\e93e";
+}
+
+.pi-user-plus:before {
+    content: "\e93f";
+}
+
+.pi-trash:before {
+    content: "\e93d";
+}
+
+.pi-external-link:before {
+    content: "\e93c";
+}
+
+.pi-window-maximize:before {
+    content: "\e93b";
+}
+
+.pi-window-minimize:before {
+    content: "\e93a";
+}
+
+.pi-refresh:before {
+    content: "\e938";
+}
+  
+.pi-user:before {
+    content: "\e939";
+}
+
+.pi-exclamation-triangle:before {
+    content: "\e922";
+}
+
+.pi-calendar:before {
+    content: "\e927";
+}
+
+.pi-chevron-circle-left:before {
+    content: "\e928";
+}
+
+.pi-chevron-circle-down:before {
+    content: "\e929";
+}
+
+.pi-chevron-circle-right:before {
+    content: "\e92a";
+}
+
+.pi-chevron-circle-up:before {
+    content: "\e92b";
+}
+
+.pi-angle-double-down:before {
+    content: "\e92c";
+}
+
+.pi-angle-double-left:before {
+    content: "\e92d";
+}
+
+.pi-angle-double-right:before {
+    content: "\e92e";
+}
+
+.pi-angle-double-up:before {
+    content: "\e92f";
+}
+
+.pi-angle-down:before {
+    content: "\e930";
+}
+
+.pi-angle-left:before {
+    content: "\e931";
+}
+
+.pi-angle-right:before {
+    content: "\e932";
+}
+
+.pi-angle-up:before {
+    content: "\e933";
+}
+
+.pi-upload:before {
+    content: "\e934";
+}
+
+.pi-download:before {
+    content: "\e956";
+}
+
+.pi-ban:before {
+    content: "\e935";
+}
+
+.pi-star-o:before {
+    content: "\e936";
+}
+
+.pi-star:before {
+    content: "\e937";
+}
+
+.pi-chevron-left:before {
+    content: "\e900";
+}
+
+.pi-chevron-right:before {
+    content: "\e901";
+}
+
+.pi-chevron-down:before {
+    content: "\e902";
+}
+
+.pi-chevron-up:before {
+    content: "\e903";
+}
+
+.pi-caret-left:before {
+    content: "\e904";
+}
+
+.pi-caret-right:before {
+    content: "\e905";
+}
+
+.pi-caret-down:before {
+    content: "\e906";
+}
+
+.pi-caret-up:before {
+    content: "\e907";
+}
+
+.pi-search:before {
+    content: "\e908";
+}
+
+.pi-check:before {
+    content: "\e909";
+}
+
+.pi-check-circle:before {
+    content: "\e90a";
+}
+
+.pi-times:before {
+    content: "\e90b";
+}
+
+.pi-times-circle:before {
+    content: "\e90c";
+}
+
+.pi-plus:before {
+    content: "\e90d";
+}
+
+.pi-plus-circle:before {
+    content: "\e90e";
+}
+
+.pi-minus:before {
+    content: "\e90f";
+}
+
+.pi-minus-circle:before {
+    content: "\e910";
+}
+
+.pi-circle-on:before {
+    content: "\e911";
+}
+
+.pi-circle-off:before {
+    content: "\e912";
+}
+
+.pi-sort-down:before {
+    content: "\e913";
+}
+
+.pi-sort-up:before {
+    content: "\e914";
+}
+
+.pi-sort:before {
+    content: "\e915";
+}
+
+.pi-step-backward:before {
+    content: "\e916";
+}
+
+.pi-step-forward:before {
+    content: "\e917";
+}
+
+.pi-th-large:before {
+    content: "\e918";
+}
+
+.pi-arrow-down:before {
+    content: "\e919";
+}
+
+.pi-arrow-left:before {
+    content: "\e91a";
+}
+
+.pi-arrow-right:before {
+    content: "\e91b";
+}
+
+.pi-arrow-up:before {
+    content: "\e91c";
+}
+
+.pi-bars:before {
+    content: "\e91d";
+}
+
+.pi-arrow-circle-down:before {
+    content: "\e91e";
+}
+
+.pi-arrow-circle-left:before {
+    content: "\e91f";
+}
+
+.pi-arrow-circle-right:before {
+    content: "\e920";
+}
+
+.pi-arrow-circle-up:before {
+    content: "\e921";
+}
+
+.pi-info:before {
+    content: "\e923";
+}
+
+.pi-info-circle:before {
+    content: "\e924";
+}
+
+.pi-home:before {
+    content: "\e925";
+}
+
+.pi-spinner:before {
+    content: "\e926";
+}

@@ -1,0 +1,166 @@
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo">
+        <h:form id="formulario">
+            <h:panelGrid>
+                <p:growl id="mensagem" showDetail="true" sticky="true" /> 
+            </h:panelGrid>
+
+            <p:panelGrid id="panelBuscar" columns="4" styleClass="removeBorderPanelGrid">
+                <p:outputLabel value="Nome do Jogo" for="nome" />
+                <p:inputText id="nome" value="#{gameBean.nomeJogo}"
+                             style="max-width:400px;" />
+
+                <p:outputLabel value="Numero de Série" for="numeroSerie" />
+                <p:inputText id="numeroSerie" value="#{gameBean.numeroSerie}"
+                             style="max-width:400px;" />
+
+                <p:commandButton value="Consultar" styleClass="btn"
+                                 update="panelNovoEditar panelDataTable" actionListener="#{gameBean.acaoBotaoConsulta()}"/>
+                <p:commandButton value="Adicionar" styleClass="btn" update="panelNovoEditar panelDataTable"
+                                 actionListener="#{gameBean.acaoBotaoNovo()}" immediate="true"/>
+            </p:panelGrid>
+
+            <p:panelGrid id="panelNovoEditar" columns="1" style="margin-top: 20px; margin-right: 20px; margin-left: 300px">
+                <p:panelGrid id="panelNE" columns="4" rendered="#{gameBean.habilitarPainel()}" styleClass="removeBorderPanelGrid">
+
+                    <p:outputLabel value="Nome do Título" for="nomePanel" />
+                    <p:inputText id="nomePanel" value="#{gameBean.gameCRUD.nomeTitulo}"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Nome do Título é Obrigatório"/>
+
+                    <p:outputLabel value="Número de Série" for="numeroPanel" />
+                    <p:inputText id="numeroPanel" value="#{gameBean.gameCRUD.numeroSerie}"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Número de Série é Obrigatório"/>
+
+                    <p:outputLabel value="Data de Lançamento" for="data" />
+                    <p:calendar id="data" value="#{gameBean.gameCRUD.dataLancamento}" pattern="yyyy-MM-dd" mask="true"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Data de Lançamento é Obrigatório"/>
+
+                    <p:outputLabel value="Faixa Etária" for="faixa" />
+                    <p:inputNumber id="faixa" value="#{gameBean.gameCRUD.faixaEtaria}" decimalPlaces="0" minValue="0" maxValue="99" 
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Faixa Etária é Obrigatório"/>
+
+                    <p:outputLabel value="Valor de Aluguel" for="aluguel" />
+                    <p:inputNumber id="aluguel" value="#{gameBean.gameCRUD.valorAluguel}" decimalPlaces="2"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Valor de Aluguel é Obrigatório"/>
+                    
+                    <p:outputLabel value="" />
+                    <p:outputLabel value="" />
+                    
+                    <p:outputLabel for="genero" value="Gênero:" />
+                    <p:selectOneMenu id="genero" value="#{gameBean.gameCRUD.genero}" style="width:125px">
+                        <f:selectItem itemLabel="Ação" itemValue="AÇÃO" />
+                        <f:selectItem itemLabel="Aventura" itemValue="AVENTURA" />
+                        <f:selectItem itemLabel="Corrida" itemValue="CORRIDA" />
+                        <f:selectItem itemLabel="Esporte" itemValue="ESPORTE" />
+                        <f:selectItem itemLabel="Estratégia" itemValue="ESTRATÉGIA" />
+                        <f:selectItem itemLabel="Moba" itemValue="MOBA" />
+                        <f:selectItem itemLabel="RPG" itemValue="RPG" />
+                        <f:selectItem itemLabel="Tiro" itemValue="TIRO" />
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel for="estudio" value="Estúdio:" />
+                    <p:selectOneMenu id="estudio" value="#{gameBean.gameCRUD.estudio}" style="width:125px">
+                        <f:selectItem itemLabel="EA" itemValue="EA" />
+                        <f:selectItem itemLabel="Konami" itemValue="KONAMI" />
+                        <f:selectItem itemLabel="Ubisoft" itemValue="UBISOFT" />
+                        <f:selectItem itemLabel="Valve" itemValue="VALVE" />
+                        <f:selectItem itemLabel="Microsoft" itemValue="MICROSOFT" />
+                        <f:selectItem itemLabel="Warner" itemValue="WARNER" />
+                        <f:selectItem itemLabel="Rockstar" itemValue="ROCKSTAR" />
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel for="console" value="Console:" />
+                    <p:selectOneMenu id="console" value="#{gameBean.gameCRUD.console}" style="width:125px">
+                        <f:selectItem itemLabel="Xbox 360" itemValue="XBOX_360" />
+                        <f:selectItem itemLabel="Xbox One" itemValue="XBOX_ONE" />
+                        <f:selectItem itemLabel="Playstation 3" itemValue="PLAYSTATION_3" />
+                        <f:selectItem itemLabel="Playstation 4" itemValue="PLAYSTATION_4" />
+                        <f:selectItem itemLabel="PC" itemValue="PC" />
+                        <f:selectItem itemLabel="Nintendo 3DS" itemValue="NINTENDO_3DS" />
+                        <f:selectItem itemLabel="Nintendo Switch" itemValue="NINTENDO_SWITCH" />
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel for="alugado" value="Jogo Alugado:" />
+                    <p:selectOneMenu id="alugado" value="#{gameBean.alugadoPanel}" style="width:125px">
+                        <f:selectItem itemLabel="Não" itemValue="Não" />
+                        <f:selectItem itemLabel="Sim" itemValue="Sim" />
+                    </p:selectOneMenu>
+
+                    <p:commandButton value="Salvar" styleClass="btn"
+                                     update="panelDataTable panelNovoEditar mensagem" actionListener="#{gameBean.acaoBotaoSalvar()}"/>
+                    <p:commandButton value="Cancelar" styleClass="btn" update="panelDataTable panelNovoEditar"
+                                     actionListener="#{gameBean.acaoBotaoCancelar()}" immediate="true"/>
+                </p:panelGrid>
+            </p:panelGrid>
+
+            <p:panelGrid id="panelDataTable" columns="1" styleClass="removeBorderPanelGrid" style="margin-top: 20px;">
+                <p:dataTable id="dtGame" var="game" value="#{gameBean.games}" rows="10"
+                             paginator="true" rendered="#{gameBean.habilitarConsulta()}" tableStyle="table-layout: auto"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" emptyMessage="Nenhum Registro de Jogo foi Encontrado">
+                    
+                    <p:column headerText="Nome do Título">
+                        <h:outputText value="#{game.nomeTitulo}" />
+                    </p:column>
+
+                    <p:column headerText="Número de Série">
+                        <h:outputText value="#{game.numeroSerie}" />
+                    </p:column>
+
+                    <p:column headerText="Gênero">
+                        <h:outputText value="#{game.genero}" />
+                    </p:column>
+
+                    <p:column headerText="Estúdio">
+                        <h:outputText value="#{game.estudio}" />
+                    </p:column>
+
+                    <p:column headerText="Console">
+                        <h:outputText value="#{game.console}" />
+                    </p:column>
+
+                    <p:column headerText="Data de Lançamento">
+                        <h:outputText value="#{game.dataLancamento}" />
+                    </p:column>
+
+                    <p:column headerText="Valor de Aluguel">
+                        <h:outputText value="#{game.valorAluguel}">
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Faixa Etária">
+                        <h:outputText value="#{game.faixaEtaria}" />
+                    </p:column>
+
+                    <p:column headerText="Cadastrante">
+                        <h:outputText value="#{game.funcionario.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Alugado">
+                        <h:outputText value="#{gameBean.getAlugado(game.alugado)}" />
+                    </p:column>
+
+                    <p:column headerText="Alterar">
+                        <p:commandButton icon="fa fa-pencil" 
+                                         actionListener="#{gameBean.acaoBotaoAlterar(game)}" process="@this" ajax="true" update=":formulario" immediate="true">
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column headerText="Deletar">
+                        <p:commandButton icon="fa fa-trash" action="#{gameBean.deletarGame(game)}" ajax="false" update="panelDataTable" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable>
+            </p:panelGrid>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

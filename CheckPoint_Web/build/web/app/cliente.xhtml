@@ -1,0 +1,140 @@
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo">
+        <h:form id="formulario">
+            <h:panelGrid>
+                <p:growl id="mensagem" showDetail="true" sticky="true" /> 
+            </h:panelGrid>
+
+            <p:panelGrid id="panelBuscar" columns="4" styleClass="removeBorderPanelGrid">
+                <p:outputLabel value="Nome do Cliente" for="nome" />
+                <p:inputText id="nome" value="#{clienteBean.nome}"
+                             style="max-width:400px;" />
+
+                <p:outputLabel value="Sobrenome do Cliente" for="sobrenome" />
+                <p:inputText id="sobrenome" value="#{clienteBean.sobrenome}"
+                             style="max-width:400px;" />
+
+                <p:commandButton value="Consultar" styleClass="btn"
+                                 update="panelNovoEditar panelDataTable" actionListener="#{clienteBean.acaoBotaoConsulta()}"/>
+                <p:commandButton value="Adicionar" styleClass="btn" update="panelNovoEditar panelDataTable"
+                                 actionListener="#{clienteBean.acaoBotaoNovo()}" immediate="true"/>
+            </p:panelGrid>
+
+            <p:panelGrid id="panelNovoEditar" columns="1" style="margin-top: 20px; margin-right: 20px; margin-left: 300px">
+                <p:panelGrid id="panelNE" columns="4" rendered="#{clienteBean.habilitarPainel()}" styleClass="removeBorderPanelGrid">
+
+                    <p:outputLabel value="Nome" for="nomePanel" />
+                    <p:inputText id="nomePanel" value="#{clienteBean.clienteCRUD.nome}"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Nome é Obrigatório"/>
+
+                    <p:outputLabel value="Sobrenome" for="sobrenomePanel" />
+                    <p:inputText id="sobrenomePanel" value="#{clienteBean.clienteCRUD.sobrenome}"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Sobrenome é Obrigatório"/>
+                    
+                    <p:outputLabel value="CPF" for="cpf" />
+                    <p:inputMask id="cpf" value="#{clienteBean.clienteCRUD.cpf}" mask="999.999.999-99" maxlength="14"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo CPF é Obrigatório"/>
+
+                    <p:outputLabel value="RG" for="rg" />
+                    <p:inputMask id="rg" value="#{clienteBean.clienteCRUD.rg}" mask="99.999.999-9" maxlength="12"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo RG é Obrigatório"/>
+                    
+                    <p:outputLabel value="Data de Nascimento" for="data" />
+                    <p:calendar id="data" value="#{clienteBean.clienteCRUD.dataNascimento}" pattern="yyyy-MM-dd" mask="true"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Data de Nascimento é Obrigatório"/>
+
+                    <p:outputLabel/>
+                    <p:outputLabel/>
+                    
+                    <p:outputLabel value="Endereço" for="endereco" />
+                    <p:inputText id="endereco" value="#{clienteBean.clienteCRUD.endereco}"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Endereço é Obrigatório"/>
+
+                    <p:outputLabel value="Complemento" for="complemento" />
+                    <p:inputText id="complemento" value="#{clienteBean.clienteCRUD.complemento}"
+                                 style="max-width:400px;"/>
+                    
+                    <p:outputLabel value="Email" for="email" />
+                    <p:inputText id="email" value="#{clienteBean.clienteCRUD.email}"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Email é Obrigatório"/>
+
+                    <p:outputLabel value="Telefone" for="telefone" />
+                    <p:inputText id="telefone" value="#{clienteBean.clienteCRUD.telefone}" onkeyup="$(this).val($(this).val().replace(/[^0-9]/g, ''));"
+                                 style="max-width:400px;" required="true" requiredMessage="O Campo Telefone é Obrigatório"/>
+                    
+                    <p:commandButton value="Salvar" styleClass="btn"
+                                     update="panelDataTable panelNovoEditar mensagem" actionListener="#{clienteBean.acaoBotaoSalvar()}"/>
+                    <p:commandButton value="Cancelar" styleClass="btn" update="panelDataTable panelNovoEditar"
+                                     actionListener="#{clienteBean.acaoBotaoCancelar()}" immediate="true"/>
+                </p:panelGrid>
+            </p:panelGrid>
+
+            <p:panelGrid id="panelDataTable" columns="1" styleClass="removeBorderPanelGrid" style="margin-top: 20px;">
+                <p:dataTable id="dtGame" var="cliente" value="#{clienteBean.clientes}" rows="10" tableStyle="table-layout: auto"
+                             paginator="true" rendered="#{clienteBean.habilitarConsulta()}" 
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" emptyMessage="Nenhum Registro de Cliente foi Encontrado">
+                    
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{cliente.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Sobrenome">
+                        <h:outputText value="#{cliente.sobrenome}" />
+                    </p:column>
+
+                    <p:column headerText="CPF">
+                        <h:outputText value="#{cliente.cpf}" />
+                    </p:column>
+
+                    <p:column headerText="RG">
+                        <h:outputText value="#{cliente.rg}" />
+                    </p:column>
+
+                    <p:column headerText="Data de Nascimento">
+                        <h:outputText value="#{cliente.dataNascimento}" />
+                    </p:column>
+
+                    <p:column headerText="Endereço">
+                        <h:outputText value="#{cliente.endereco}" />
+                    </p:column>
+                    
+                    <p:column headerText="Complemento">
+                        <h:outputText value="#{cliente.complemento}" />
+                    </p:column>
+
+                    <p:column headerText="Email">
+                        <h:outputText value="#{cliente.email}" />
+                    </p:column>
+
+                    <p:column headerText="Telefone">
+                        <h:outputText value="#{cliente.telefone}" />
+                    </p:column>
+                    
+                    <p:column headerText="Cadastrante">
+                        <h:outputText value="#{cliente.funcionario.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Alterar">
+                        <p:commandButton icon="fa fa-pencil" 
+                                         actionListener="#{clienteBean.acaoBotaoAlterar(cliente)}" process="@this" ajax="true" update=":formulario" immediate="true">
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column headerText="Deletar">
+                        <p:commandButton icon="fa fa-trash" action="#{clienteBean.deletarCliente(cliente)}" ajax="false" update="panelDataTable" immediate="true"/>
+                    </p:column>
+
+                </p:dataTable>
+            </p:panelGrid>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

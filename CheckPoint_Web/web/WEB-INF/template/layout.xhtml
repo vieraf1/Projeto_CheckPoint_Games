@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/tags">
+
+    <h:head>
+        <h:outputScript library="js" name="jquery.maskMoney.js" target="body" />
+        <h:outputStylesheet library="css" name="customStyle.css" />
+        <h:outputScript library="js" name="customJs.js" />
+        <title>CheckPoint Games</title>
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true" stateful="true">
+
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <p:graphicImage name="loader.gif" library="images" />
+            </p:dialog>
+
+
+            <p:layoutUnit position="north" size="70" collapsible="true" effect="fade">
+			<ui:include src="menu.xhtml" />
+	    </p:layoutUnit>
+
+            <p:layoutUnit position="center" id="containerId" minSize="800" maxSize="1500">
+                <ui:insert name="conteudo" />
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="30" closable="false" collapsible="false" resizable="false" style="text-align:center;">
+                <span>CheckPoint Games</span>
+            </p:layoutUnit>
+        </p:layout>
+
+
+    </h:body>
+</html>
+
+

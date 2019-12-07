@@ -1,0 +1,37 @@
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo">
+        <h:form id="formulario">
+            <h:panelGrid>
+                <p:growl id="mensagem" showDetail="true" sticky="true" /> 
+            </h:panelGrid>
+
+            <p:panelGrid id="panelBuscar" columns="2" styleClass="removeBorderPanelGrid">
+
+                <p:outputLabel value="Data De:" for="dataDe" />
+                <p:calendar id="dataDe" value="#{relatorioBean.dataDe}" pattern="yyyy-MM-dd" mask="true"
+                                 style="max-width:400px;" />
+
+                <p:outputLabel value="Data Até:" for="dataAte" />
+                <p:calendar id="dataAte" value="#{relatorioBean.dataAte}" pattern="yyyy-MM-dd" mask="true"
+                                style="max-width:400px;" />
+                
+                <p:commandButton value="Relatório por Game" styleClass="btn"
+                                 ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                    <p:fileDownload value="#{relatorioBean.relatorioGame}"/>
+                </p:commandButton>
+                <p:commandButton value="Relatório por Gênero" styleClass="btn"
+                                 ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                    <p:fileDownload value="#{relatorioBean.relatorioGenero}"/>
+                </p:commandButton>
+            </p:panelGrid>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

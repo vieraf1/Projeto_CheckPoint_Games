@@ -1,0 +1,39 @@
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo">
+        <h:form id="formulario" >
+
+            <h:panelGrid style="height: 150px">
+                <p:growl id="growl" showDetail="true" sticky="true" /> 
+            </h:panelGrid>
+            
+            <p:panel style="margin-left: 300px;margin-top: 10px; margin-right: 300px;">
+                <h:panelGrid columns="4" cellpadding="5" style="margin-left: 30px;">
+                    <h:outputLabel for="senhaAntiga" value="Senha Atual:" />
+                    <p:password id="senhaAntiga" value="#{alterarSenhaBean.senhaAntiga}" required="true" requiredMessage="Campo Senha Atual é Obrigatório"/>
+
+                    <h:outputLabel for="senhaAntigaConfirmar" value="Confirmar Senha Atual:" />
+                    <p:password id="senhaAntigaConfirmar" value="#{alterarSenhaBean.senhaAntigaConfirmar}" required="true" requiredMessage="Campo Confirmar Senha Atual é Obrigatório"/>
+                    
+                    <h:outputLabel for="senhaNova" value="Senha Nova:" />
+                    <p:password id="senhaNova" value="#{alterarSenhaBean.senhaNova}" required="true" requiredMessage="Campo Senha Nova é Obrigatório"/>
+
+                    <h:outputLabel for="senhaNovaConfirmar" value="Confirmar Senha Nova:" />
+                    <p:password id="senhaNovaConfirmar" value="#{alterarSenhaBean.senhaNovaConfirmar}" required="true" requiredMessage="Campo Confirmar Senha Nova é Obrigatório"/>
+
+                    <f:facet name="footer">
+                        <p:commandButton styleClass="btn" value="Alterar Senha" action="#{alterarSenhaBean.alterarSenha()}"
+                                         update="formulario"/>
+                    </f:facet>  
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+        <h:form id="menuForm">
+
+            <p:menubar  style="background-color: #FFFFFF">
+                <p:submenu label="Informações Pessoais" >
+                    <p:menuitem value="Alterar Senha" action="/app/alterarSenha.jsf" />
+                </p:submenu>
+                <p:submenu label="Cadastro" >
+                    <p:menuitem value="Aluguel" action="/app/aluguel.jsf" />
+                    <p:menuitem value="Cliente" action="/app/cliente.jsf" />
+                    <p:menuitem value="Jogo" action="/app/game.jsf" />
+                </p:submenu>
+                <p:submenu label="Relatórios" >
+                    <p:menuitem value="Alugueis" action="/app/relatorio.jsf" />
+                    <p:menuitem value="Disponibilidade" action="/app/disponibilidade.jsf" />
+                </p:submenu>
+                
+                <p:menuitem  action="/app/index.jsf" style="margin-left: 350px">
+                    <h:graphicImage library="images" name="checkpoint-logo.png" height="30" />
+                </p:menuitem>
+            
+                <f:facet name="options">
+                    <p:outputLabel style="margin:1px 10px 1px 1px;" value="#{loginBean.getNomeFuncionario()}"/>
+                    <p:commandButton styleClass="btn" value="Sair" action="#{loginBean.logout()}"/>
+                </f:facet>
+            
+            </p:menubar>
+
+        </h:form>
+</ui:composition>

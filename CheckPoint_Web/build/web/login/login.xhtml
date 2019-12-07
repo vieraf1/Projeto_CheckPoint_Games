@@ -1,0 +1,34 @@
+<ui:composition template="/WEB-INF/template/layout_login.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo">
+        <h:form id="formulario" >
+
+            <h:panelGrid style="height: 150px">
+                <p:growl id="growl" showDetail="true" sticky="true" /> 
+            </h:panelGrid>
+
+            <p:panel style="width:400px;margin-left: 450px;">
+                <h:panelGrid columns="2" cellpadding="5" style="margin-left: 50px;margin-top: 10px">
+                    <h:outputLabel for="username" value="Login:" />
+                    <p:inputText id="username" value="#{loginBean.login}" required="true" label="username" requiredMessage="O Campo Login é Obrigatório!"/>
+
+                    <h:outputLabel for="password" value="Senha:" />
+                    <p:password id="password" value="#{loginBean.senha}" required="true" label="password" requiredMessage="O Campo Senha é Obrigatório!"/>
+
+                    <f:facet name="footer">
+                        <p:commandButton styleClass="btn" value="Logar" action="#{loginBean.verificaLogin()}"
+                                          update="formulario"/>
+                    </f:facet>  
+                </h:panelGrid>
+            </p:panel>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
